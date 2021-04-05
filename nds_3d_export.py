@@ -42,35 +42,34 @@ import random
 from random import random
 import math
 from math import *
-
-from Numeric import *
+from numpy import *
 from struct import *
 
 # Define libnds binary functions and macros
 
 def floattov16(n) :
-    return array(n * (1<<12) , Float32).astype(Int16)
+    return array(n * (1<<12) , float32).astype(int16)
 
 def VERTEX_PACK(x,y) :
-    return array((x & 0xFFFF) | (y << 16) , Int32)
+    return array((x & 0xFFFF) | (y << 16) , int32)
 
 def floattov10(n) :
     if (n>.998) :
-        return array(0x1FF , Int16)
+        return array(0x1FF , int16)
     else :
-        return array(n * (1<<9) , Float32).astype(Int16)
+        return array(n * (1<<9) , float32).astype(int16)
 
 def NORMAL_PACK(x,y,z) :
-    return array((x & 0x3FF) | ((y & 0x3FF) << 10) | (z << 20) , Int32)
+    return array((x & 0x3FF) | ((y & 0x3FF) << 10) | (z << 20) , int32)
 
 def floattot16(n) :
-    return array( n * (1 << 4) , Float32).astype(Int16)
+    return array( n * (1 << 4) , float32).astype(int16)
 
 def TEXTURE_PACK(u,v) :
-    return array( (u & 0xFFFF) | (v << 16) , Int32)
+    return array( (u & 0xFFFF) | (v << 16) , int32)
 
 def RGB15(r,g,b) :
-    return array(r | (g << 5) | (b <<10 ) , Int32)
+    return array(r | (g << 5) | (b <<10 ) , int32)
 
 FIFO_VERTEX16  = 0x23
 FIFO_NORMAL    = 0x21
