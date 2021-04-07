@@ -177,7 +177,7 @@ class _mesh_options (object) :
         return ( Blender.sys.join(self.dir_path,self.mesh_name + (".h" if (self.format) else ".bin")) )
 
     def get_final_path_tex(self):
-        return ( Blender.sys.join(self.dir_path,self.mesh_name + ".pcx") )
+        return ( Blender.sys.join(self.dir_path, "Texture_" + self.mesh_name + ".pcx") )
 
     def __str__(self):
         return "File Format:%s , Exporting Texture:%s , Exporting Normals:%s , Exporting Colors:%s" % (self.format,self.uv_export,self.normals_export,self.color_export)
