@@ -511,16 +511,16 @@ class _nds_mesh (object) :
 
     def save_tex(self) :
         try:
-            import Image
+            import PIL.Image
         except ImportError :
             print "Python Imaging Library not installed"
         else :
             print self.options.texture_data[0].filename
             print Blender.sys.expandpath(self.options.texture_data[0].filename)
             if (self.options.texture_data[0].packed ) : self.options.texture_data[0].unpack(Blender.UnpackModes.USE_LOCAL)
-            img = Image.open(Blender.sys.expandpath(self.options.texture_data[0].getFilename()))
+            img = PIL.Image.open(Blender.sys.expandpath(self.options.texture_data[0].getFilename()))
             img_rgb = img.convert("RGB")
-            img_pal = img_rgb.convert("P",palette=Image.ADAPTIVE)
+            img_pal = img_rgb.convert("P",palette=PIL.Image.ADAPTIVE)
             img_res = img_pal.resize((self.options.texture_w,self.options.texture_h) )
             img_res.save(self.options.get_final_path_tex())
 
